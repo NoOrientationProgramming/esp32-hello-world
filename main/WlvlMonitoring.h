@@ -62,35 +62,26 @@ private:
 	Success process();
 	void processInfo(char *pBuf, char *pBufEnd);
 
-	void fancyProcess();
-	void poolProcess();
-
 	/* member variables */
 	uint32_t mStateFancy;
 	uint32_t mStatePool;
 	uint32_t mStartMs;
-	uint32_t mDiffMs;
-	uint32_t mLastTimeMs;
+	uint32_t mDiffLoopMs;
+	uint32_t mLastTimeLoopMs;
 	uint32_t mFancyDiffMs;
 	EspLedPulsing *mpLed;
 	ThreadPooling *mpPool;
 	std::list<FancyCalculating *> mLstFancy;
 
 	/* static functions */
-	static void poolDriverSet(Processing *pDrv, uint16_t idDrv);
-	static void cpuBoundProcess(void *arg);
-
+	static void poolDriverCreate(Processing *pDrv, uint16_t idDrv);
+	static void cpuBoundDrive(void *arg);
 	static void cmdProcAdd(char *pArgs, char *pBuf, char *pBufEnd);
-	static void cmdPoolDown(char *pArgs, char *pBuf, char *pBufEnd);
-	static void cmdPoolUp(char *pArgs, char *pBuf, char *pBufEnd);
 
 	/* static variables */
 	static bool fancyCreateReq;
 	static bool fancyDrivenByPool;
 	static uint32_t cntFancy;
-
-	static bool poolDownReq;
-	static bool poolUpReq;
 
 	/* constants */
 
