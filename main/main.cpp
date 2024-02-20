@@ -9,7 +9,7 @@ extern "C" void app_main()
 {
 	Processing *pApp = WlvlSupervising::create();
 
-	levelLogSet(5);
+	levelLogSet(4);
 
 	while (1)
 	{
