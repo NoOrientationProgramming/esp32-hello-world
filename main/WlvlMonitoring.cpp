@@ -222,6 +222,8 @@ void WlvlMonitoring::wifiCheck()
 		mpLed->paramSet(50, 200, 2, 600);
 }
 
+/* static functions */
+
 /*
  * Literature
  * - https://docs.espressif.com/projects/esp-idf/en/v4.3/esp32/api-reference/system/freertos.html
@@ -283,6 +285,4 @@ void WlvlMonitoring::processInfo(char *pBuf, char *pBufEnd)
 	dInfo("Loop duration\t\t%lums\n", mDiffLoopMs);
 	dInfo("Fancy duration\t\t%lums\n", mFancyDiffMs);
 }
-
-/* static functions */
 
