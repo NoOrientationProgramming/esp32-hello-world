@@ -63,8 +63,6 @@ private:
 	void processInfo(char *pBuf, char *pBufEnd);
 
 	/* member variables */
-	uint32_t mStateFancy;
-	uint32_t mStatePool;
 	uint32_t mStartMs;
 	uint32_t mDiffLoopMs;
 	uint32_t mLastTimeLoopMs;
