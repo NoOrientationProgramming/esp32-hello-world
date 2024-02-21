@@ -109,7 +109,7 @@ Success WlvlSupervising::process()
 		break;
 	case StWifiConnectedWait:
 
-		if (!mpWifi->connected())
+		if (!EspWifiConnecting::ok())
 			break;
 
 		repel(mpLed);
