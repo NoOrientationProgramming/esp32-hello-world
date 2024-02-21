@@ -28,6 +28,7 @@
 
 #include "WlvlMonitoring.h"
 #include "SystemCommanding.h"
+#include "EspWifiConnecting.h"
 #include "LibTime.h"
 
 #define dForEach_ProcState(gen) \
@@ -60,6 +61,7 @@ WlvlMonitoring::WlvlMonitoring()
 	, mFancyDiffMs(0)
 	, mpLed(NULL)
 	, mpPool(NULL)
+	, mOkWifiOld(false)
 {
 	mState = StStart;
 }
@@ -97,7 +99,6 @@ Success WlvlMonitoring::process()
 
 		mpLed->pinSet(GPIO_NUM_2);
 		mpLed->paramSet(50, 200, 1, 800);
-		//mpLed->paramSet(50, 200, 2, 600); // <-- Error condition 2
 
 		mpLed->procTreeDisplaySet(false);
 		start(mpLed);
@@ -128,6 +129,8 @@ Success WlvlMonitoring::process()
 
 		break;
 	case StMain:
+
+		wifiCheck();
 
 		if (!fancyCreateReq)
 			break;
@@ -203,6 +206,20 @@ Success WlvlMonitoring::process()
 	}
 
 	return Pending;
+}
+
+void WlvlMonitoring::wifiCheck()
+{
+	bool ok = EspWifiConnecting::ok();
+
+	if (ok == mOkWifiOld)
+		return;
+	mOkWifiOld = ok;
+
+	if (ok)
+		mpLed->paramSet(50, 200, 1, 800);
+	else
+		mpLed->paramSet(50, 200, 2, 600);
 }
 
 /*

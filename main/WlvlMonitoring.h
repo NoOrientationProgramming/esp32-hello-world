@@ -62,6 +62,8 @@ private:
 	Success process();
 	void processInfo(char *pBuf, char *pBufEnd);
 
+	void wifiCheck();
+
 	/* member variables */
 	uint32_t mStartMs;
 	uint32_t mDiffLoopMs;
@@ -70,6 +72,7 @@ private:
 	EspLedPulsing *mpLed;
 	ThreadPooling *mpPool;
 	std::list<FancyCalculating *> mLstFancy;
+	bool mOkWifiOld;
 
 	/* static functions */
 	static void poolDriverCreate(Processing *pDrv, uint16_t idDrv);
