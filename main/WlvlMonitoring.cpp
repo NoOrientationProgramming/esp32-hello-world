@@ -258,7 +258,7 @@ void WlvlMonitoring::cmdProcAdd(char *pArgs, char *pBuf, char *pBufEnd)
 	cntFancy = 1;
 	fancyDrivenByPool = false;
 
-	if (pArgs and *pArgs)
+	if (pArgs)
 		cntFancy = strtol(pArgs, NULL, 10);
 
 	if (cntFancy > 20)
