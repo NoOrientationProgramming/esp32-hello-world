@@ -41,18 +41,20 @@ idf.py flash
 
 ## Connect to debugging channels
 
+For windows: Use putty as telnet client
+
 ### Process Tree Viewer
 ```
-nc <ip> 3000
+telnet <ip> 3000
 ```
 
 ### Process Log
 ```
-nc <ip> 3001
+telnet <ip> 3001
 ```
 
 ### Command Interface
 ```
-nc <ip> 3002
+telnet <ip> 3002
 ```
 
